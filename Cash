@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+
+int main(void)
+{
+    //get amount of change in dollars from user
+    float dollars;
+    do
+    {
+        dollars = get_float("Change in dollars: $ ");
+    }
+    while (dollars < 0);
+
+    //turn dollars into cents
+    dollars = dollars * 100;
+
+    //round cents (still formatted as float dollars) to nearest whole number
+    dollars = round(dollars);
+
+    //turn float dollars into integer cents
+    int cents = dollars;
+
+    //count quarters
+    int coins = 0;
+    while (cents >= 25)
+    {
+        cents = cents - 25;
+        coins++;
+    }
+
+    //count dimes
+    while (cents >= 10)
+    {
+        cents = cents - 10;
+        coins++;
+    }
+
+    //count nickels
+    while (cents >= 5)
+    {
+        cents = cents - 5;
+        coins++;
+    }
+
+    //count pennies
+    while (cents >= 1)
+    {
+        cents = cents - 1;
+        coins++;
+    }
+
+
+    {
+        printf("%i\n", coins);
+    }
+}
